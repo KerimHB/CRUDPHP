@@ -11,6 +11,7 @@
                     <a class="nav-link text-white" href="crear.php">Crear</a>
                     <a class="nav-link text-white" href="borrar.php">Borrar</a>
                     <a class="nav-link text-white" href="ver.php">Leer</a>
+                    <a class="nav-link text-white" href="update.php">Modificar</a>
                 </div>
             </div>
         </div>
@@ -18,7 +19,7 @@
 </header>
 <div class="container text-center">
     <form action="" method="post">
-        <label for="nombreArchivo">Nombre de archivo a leer: </label>
+        <label for="nombreLeer">Nombre de archivo a leer: </label>
         <br>
         <input type="text" name="archivoLeer" id="">
         <br>

@@ -1,4 +1,5 @@
 <?php include 'head.php' ?>
+
 <header>
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
@@ -17,28 +18,39 @@
         </div>
     </nav>
 </header>
+
 <div class="container text-center">
     <form action="" method="post">
-        <label for="nombreArchivo">Nombre del archivo: </label>
+        <label for="nombreLeer">Nombre del archivo a modificar: </label>
         <br>
-        <input type="text" name="nombreArchivo" id="">
-        <br>
-        <br>
-        <label for="textoArchivo">Texto del archivo:</label>
-        <br>
-        <textarea name="textoArchivo" id="" cols="30" rows="10"></textarea>
+        <input type="text" name="nombreLeer" id="">
         <br>
         <br>
-        <button type="submit" name="crearBtn">Crear </button>
+        <button type="submit" name="openBtn">Abrir archivo</button>
     </form>
 </div>
 <?php
-if (isset($_POST['crearBtn'])) {
-    $fp = fopen(__DIR__ . '/../../documentos/' . $_POST['nombreArchivo'] . '.txt', 'w');
-    fputs($fp, $_POST['textoArchivo']);
-    fclose($fp);
-    echo('<h3>Archivo creado con exito, Nombre: '.$_POST['nombreArchivo'].'</h3>');
+if (isset($_POST['openBtn'])) {
+    $archivo = __DIR__ . '/../../documentos/' . $_POST['nombreLeer'] . '.txt';
+    $abrir = fopen($archivo, 'r+');
+    $tam = filesize($archivo);
+    $leer = fread($abrir, $tam);
+    echo ('<div class="container text-center">');
+    echo ('<label for="textoMod">Texto modificado:</label>');
+    echo ('<br>');
+    echo ('<textarea name="textoMod" id="" cols="30" rows="10">' . $leer . '</textarea>');
+    echo ('<br>');
+    echo ('<br>');
+    echo ('<button type="submit" name="upBtn">Actualizar</button>');
+    
+    echo ('</div>');
 }
-?>
+if (isset($_POST['upBtn'])) {
+        $fp = fopen(__DIR__ . '/../../documentos/' . $_POST['nombreLeer'] . '.txt', 'w+');
+        fputs($fp, $_POST['textoMod']);
+        fclose($fp);
+        echo ('<h3>Archivo actualizado con exito, Nombre: ' . $_POST['nombreLeer'] . '</h3>');
+        header('update.php');
+    }
 
-</html>
+?>

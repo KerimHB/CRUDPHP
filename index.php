@@ -11,6 +11,7 @@
                     <a class="nav-link text-white" href="assets/php/crear.php">Crear</a>
                     <a class="nav-link text-white" href="assets/php/borrar.php">Borrar</a>
                     <a class="nav-link text-white" href="assets/php/ver.php">Leer</a>
+                    <a class="nav-link text-white" href="assets/php/update.php">Modificar</a>
                 </div>
             </div>
         </div>
